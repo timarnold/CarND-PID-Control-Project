@@ -1,7 +1,17 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
 
----
+## Reflection
+
+This project provides a solution for the PID Controller project in Term 2 of the Udacity Self-Driving Car Engineer Nanodegree.
+
+As described in our lectures, there are three gain parameters in our PID Controller: a proportional term, a derivative term, and an integral term. The final values chosen for the parameters for this solution are `(P, I, D) = (0.29, 9e-4, and 5.4e-3)`. These values were chosen by using the "Twiddle" algorithm described in the lectures that does a basic optimization over these three parameters for the smallest cross-track error, and some additional manual tuning.
+
+The proportional (P) gain controls how severely the vehicle steers back to the path in proportion its deviation from that path --- a higher number for this value means the car will more strongly correct when it deviates from its path.
+
+Only a proportional term results in oscillations about the path, however, and so we introduce a derivative term (D) that adjusts the proportional steering according to the derivative of the error with respect to time. This adjustment, when set properly, damps the proportional-driven oscillations about the path.
+
+Finally, we have an integral term that accounts for cumulative, systematic errors associated with our controller. For example, if our vehicle (with a PD-only system) does not follow our path due to a systematic error in the steering, the integral term will adjust and eventually correct this error. It does this by adjusting the steering value in proportion to the accumulated error over time.
 
 ## Dependencies
 
